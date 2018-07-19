@@ -1,13 +1,16 @@
 package FirstTask.transaction;
 
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
+
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.sql.Timestamp;
 
 @Entity
+@Table("money_events")
 public class Transaction {
 
-    @Id
+    @PrimaryKey
     private String username;
     private Double amount;
     private Long timestamp;

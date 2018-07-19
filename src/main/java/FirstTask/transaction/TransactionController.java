@@ -1,5 +1,7 @@
 package FirstTask.transaction;
 
+import FirstTask.Kafka.KafkaProducerServer;
+import FirstTask.Kafka.MessageStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import FirstTask.user.User;
@@ -11,6 +13,12 @@ public class TransactionController {
 
     @Autowired
     private TransactionService transactionService;
+
+    @Autowired
+    KafkaProducerServer sender;
+
+    @Autowired
+    MessageStorage storage;
 
     @RequestMapping("/users")
     public List<User> getAllUsers(){
@@ -30,6 +38,7 @@ public class TransactionController {
     @RequestMapping(method=RequestMethod.POST, value="/users/add")
     public void addUser(@RequestBody Transaction transaction){
         transactionService.addAmount(transaction);
+        sender.send(transaction);
     }
 
     @RequestMapping(method=RequestMethod.PUT, value="/users/{id}")
@@ -40,6 +49,12 @@ public class TransactionController {
     @RequestMapping(method=RequestMethod.DELETE, value="/users/{id}")
     public void deleteUser(@PathVariable int id) {
         transactionService.deleteUser(id);
+    }
+
+    @GetMapping(value="/users/log")
+    public String getAllRecievedMessage(){
+        String messages = storage.toString();
+        return messages;
     }
 
 }

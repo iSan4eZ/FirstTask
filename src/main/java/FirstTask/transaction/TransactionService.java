@@ -14,6 +14,8 @@ public class TransactionService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private TransactionRepository transactionRepository;
 
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
@@ -44,6 +46,7 @@ public class TransactionService {
 
     public void addAmount(Transaction transaction) {
         User user = getUserByUsername(transaction.getUsername());
+        transactionRepository.save(transaction);
         if (user != null){
             user.setBalance(user.getBalance() + transaction.getAmount());
             updateUser(user);
