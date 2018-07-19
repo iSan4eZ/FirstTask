@@ -5,18 +5,25 @@ import org.springframework.data.cassandra.core.mapping.Table;
 
 import javax.persistence.Entity;
 import java.sql.Timestamp;
+import java.util.UUID;
 
 @Entity
-@Table("money_events")
+@Table("money_events_fix")
 public class Transaction {
 
     @PrimaryKey
+    private UUID id;
     private String username;
     private Double amount;
     private Long timestamp;
 
     public Transaction(){
         timestamp = new Timestamp(System.currentTimeMillis()).getTime();
+        id = UUID.randomUUID();
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getUsername() {
