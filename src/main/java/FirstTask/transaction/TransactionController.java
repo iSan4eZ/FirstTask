@@ -51,10 +51,15 @@ public class TransactionController {
         transactionService.deleteUser(id);
     }
 
-    @GetMapping(value="/users/log")
+    @RequestMapping(value="/users/log")
     public String getAllRecievedMessage(){
         String messages = storage.toString();
         return messages;
+    }
+
+    @RequestMapping("/users/{id}/transactions")
+    public List<Transaction> getTransactionsByUserId(@PathVariable int id) {
+        return transactionService.getTransactionsByUserId(id);
     }
 
 }

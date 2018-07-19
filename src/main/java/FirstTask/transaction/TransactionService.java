@@ -23,6 +23,7 @@ public class TransactionService {
                 forEach(users::add);
         return users;
     }
+
     public User getUserById(int id){
         return userRepository.findById(id);
     }
@@ -53,5 +54,9 @@ public class TransactionService {
         } else {
             addUser(new User(transaction.getUsername(),transaction.getAmount()));
         }
+    }
+
+    public List<Transaction> getTransactionsByUserId(int id){
+        return transactionRepository.findByUsername(userRepository.findById(id).getUsername());
     }
 }
