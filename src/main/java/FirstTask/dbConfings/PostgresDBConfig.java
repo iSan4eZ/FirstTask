@@ -27,7 +27,7 @@ public class PostgresDBConfig {
 
     @Primary
     @Bean
-    @ConfigurationProperties("postgres.datasource")
+    @ConfigurationProperties("postgres")
     public DataSourceProperties userDSProperties() {
         return new DataSourceProperties();
     }

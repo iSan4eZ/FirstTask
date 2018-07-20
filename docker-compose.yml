@@ -24,7 +24,7 @@ services:
                         KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
         cassandra:
                 container_name: cassandra
-                image: bitnami/cassandra:latest
+                image: cassandra:latest
                 ports:
                         - '7000:7000'
                         - '7001:7001'

@@ -1,0 +1,14 @@
+CREATE KEYSPACE firsttask WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
+
+CREATE TABLE firsttask.money_events_fix (
+    id uuid PRIMARY KEY,
+    amount double,
+    timestamp bigint,
+    username text
+);
+
+CREATE TABLE firsttask.money_events (
+    username text PRIMARY KEY,
+    amount double,
+    timestamp bigint
+);
