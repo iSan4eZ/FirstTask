@@ -1,15 +1,22 @@
-package FirstTask.transaction;
+package firsttask.services;
 
+import firsttask.domain.Transaction;
+import firsttask.repositories.TransactionRepository;
+import firsttask.repositories.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import FirstTask.user.User;
-import FirstTask.user.UserRepository;
+import firsttask.domain.User;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
+@Slf4j
 public class TransactionService {
 
     @Autowired
@@ -17,11 +24,17 @@ public class TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
 
+    @Transactional
     public List<User> getUsers() {
-        List<User> users = new ArrayList<>();
-        userRepository.findAll().
-                forEach(users::add);
-        return users;
+        List<User> result = Collections.emptyList();
+
+        try (Stream<User> stream = userRepository.findAllByCustomQueryAndStream()) {
+            result = stream.collect(Collectors.toList());
+        } catch (Exception e){
+            log.info(e.getMessage(), e);
+        }
+
+        return result;
     }
 
     public User getUserById(int id){
@@ -47,6 +60,7 @@ public class TransactionService {
 
     public void addAmount(Transaction transaction) {
         User user = getUserByUsername(transaction.getUsername());
+
         transactionRepository.save(transaction);
         if (user != null){
             user.setBalance(user.getBalance() + transaction.getAmount());

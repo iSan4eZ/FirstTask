@@ -1,49 +1,34 @@
-package FirstTask.transaction;
+package firsttask.domain;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 import java.util.UUID;
 
 @Entity
 @Table("money_events_fix")
+@Getter
+@Setter
 public class Transaction {
 
+    @Id
     @PrimaryKey
-    private UUID id;
+    @Setter(AccessLevel.PRIVATE)
+    private final UUID id;
     private String username;
     private Double amount;
-    private Long timestamp;
+    @Setter(AccessLevel.PRIVATE)
+    private final Long timestamp;
 
     public Transaction(){
         timestamp = new Timestamp(System.currentTimeMillis()).getTime();
         id = UUID.randomUUID();
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public Long getTimestamp() {
-        return timestamp;
     }
 
     @Override

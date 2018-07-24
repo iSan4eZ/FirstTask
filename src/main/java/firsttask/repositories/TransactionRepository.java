@@ -1,5 +1,6 @@
-package FirstTask.transaction;
+package firsttask.repositories;
 
+import firsttask.domain.Transaction;
 import org.springframework.data.cassandra.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

@@ -1,6 +1,6 @@
-package FirstTask.dbConfings;
+package firsttask.dbconfings;
 
-import FirstTask.transaction.TransactionRepository;
+import firsttask.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

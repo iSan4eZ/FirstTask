@@ -1,10 +1,10 @@
-package FirstTask.transaction;
+package firsttask.controllers;
 
-import FirstTask.Kafka.KafkaProducerServer;
-import FirstTask.Kafka.MessageStorage;
+import firsttask.domain.Transaction;
+import firsttask.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import FirstTask.user.User;
+import firsttask.domain.User;
 
 import java.util.List;
 

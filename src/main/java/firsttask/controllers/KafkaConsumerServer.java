@@ -1,14 +1,13 @@
-package FirstTask.Kafka;
+package firsttask.controllers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 public class KafkaConsumerServer {
-    private static final Logger log = LoggerFactory.getLogger(KafkaProducerServer.class);
 
     @Autowired
     MessageStorage storage;

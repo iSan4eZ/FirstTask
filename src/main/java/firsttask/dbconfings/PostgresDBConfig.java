@@ -1,10 +1,10 @@
-package FirstTask.dbConfings;
+package firsttask.dbconfings;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import FirstTask.user.User;
-import FirstTask.user.UserRepository;
+import firsttask.domain.User;
+import firsttask.repositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
