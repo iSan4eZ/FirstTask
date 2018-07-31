@@ -1,4 +1,4 @@
-package firsttask.dbconfings;
+package firsttask.confings;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -22,7 +22,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackageClasses = UserRepository.class, entityManagerFactoryRef = "userDSEmFactory", transactionManagerRef = "userDSTransactionManager")
+@EnableJpaRepositories(basePackageClasses =
+        UserRepository.class,
+        entityManagerFactoryRef = "userDSEmFactory",
+        transactionManagerRef = "userDSTransactionManager")
 public class PostgresDBConfig {
 
     @Primary

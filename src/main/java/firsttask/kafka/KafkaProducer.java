@@ -1,4 +1,4 @@
-package firsttask.controllers;
+package firsttask.kafka;
 
 import firsttask.domain.Transaction;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class KafkaProducerServer {
+public class KafkaProducer {
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;

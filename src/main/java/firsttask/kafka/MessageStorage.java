@@ -1,4 +1,4 @@
-package firsttask.controllers;
+package firsttask.kafka;
 
 import java.util.ArrayList;
 import java.util.List;

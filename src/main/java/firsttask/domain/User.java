@@ -1,19 +1,19 @@
 package firsttask.domain;
 
-import lombok.*;
+import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "customers")
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 public class User {
 
     @Id
     @GeneratedValue
-    @Setter(AccessLevel.PRIVATE)
     private int id;
     private String username;
     private Double balance;
@@ -21,5 +21,15 @@ public class User {
     public User(String username, Double balance){
         this.username = username;
         this.balance = balance;
+    }
+
+    public User() {
+
+    }
+
+    public void setLanguages(String... languages) {
+    }
+
+    public void setRole(String developer) {
     }
 }
