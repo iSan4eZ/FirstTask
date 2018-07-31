@@ -1,4 +1,4 @@
-package firsttask.dbconfings;
+package firsttask.confings;
 
 import firsttask.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +65,12 @@ public class CassandraDBConfig extends AbstractCassandraConfiguration {
                 "amount double," +
                 "timestamp bigint" +
                 ");");
+        scripts.add("CREATE TABLE IF NOT EXISTS " + getKeyspaceName() + ".money_events_v2 (" +
+                "username text," +
+                "amount double," +
+                "timestamp bigint," +
+                "PRIMARY KEY(username, timestamp)" +
+                ") WITH CLUSTERING ORDER BY (timestamp ASC);");
         return scripts;
     }
 
